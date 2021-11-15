@@ -37,11 +37,10 @@ ext {
 }
 
 allprojects {
-    group = 'com.github.Qamar4P'
-    version = versionName
 
     repositories {
         google()
+        maven { url "https://jitpack.io" }
         jcenter()
     }
 }
