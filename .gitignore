@@ -10,5 +10,7 @@
 /.idea/dictionaries
 .DS_Store
 /build
+/app
+/ffmpeg
 /captures
 .externalNativeBuild
