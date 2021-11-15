@@ -95,29 +95,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         updating = true;
         progressBar.setVisibility(View.VISIBLE);
-//        Disposable disposable = Observable.fromCallable(() -> YoutubeDL.getInstance().updateYoutubeDL(getApplication()))
-//                .subscribeOn(Schedulers.newThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(status -> {
-//                    progressBar.setVisibility(View.GONE);
-//                    switch (status) {
-//                        case DONE:
-//                            Toast.makeText(MainActivity.this, "update successful", Toast.LENGTH_LONG).show();
-//                            break;
-//                        case ALREADY_UP_TO_DATE:
-//                            Toast.makeText(MainActivity.this, "already up to date", Toast.LENGTH_LONG).show();
-//                            break;
-//                        default:
-//                            Toast.makeText(MainActivity.this, status.toString(), Toast.LENGTH_LONG).show();
-//                            break;
-//                    }
-//                    updating = false;
-//                }, e -> {
-//                    if(BuildConfig.DEBUG) Log.e(TAG, "failed to update", e);
-//                    progressBar.setVisibility(View.GONE);
-//                    Toast.makeText(MainActivity.this, "update failed", Toast.LENGTH_LONG).show();
-//                    updating = false;
-//                });
-//        compositeDisposable.add(disposable);
+        Disposable disposable = Observable.fromCallable(() -> YoutubeDL.getInstance().updateYoutubeDL(getApplication()))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(status -> {
+                    progressBar.setVisibility(View.GONE);
+                    switch (status) {
+                        case DONE:
+                            Toast.makeText(MainActivity.this, "update successful", Toast.LENGTH_LONG).show();
+                            break;
+                        case ALREADY_UP_TO_DATE:
+                            Toast.makeText(MainActivity.this, "already up to date", Toast.LENGTH_LONG).show();
+                            break;
+                        default:
+                            Toast.makeText(MainActivity.this, status.toString(), Toast.LENGTH_LONG).show();
+                            break;
+                    }
+                    updating = false;
+                }, e -> {
+                    if(BuildConfig.DEBUG) Log.e(TAG, "failed to update", e);
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(MainActivity.this, "update failed", Toast.LENGTH_LONG).show();
+                    updating = false;
+                });
+        compositeDisposable.add(disposable);
     }
 }

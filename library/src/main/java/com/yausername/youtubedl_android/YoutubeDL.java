@@ -29,9 +29,9 @@ public class YoutubeDL {
     private static final String pythonLibName = "libpython.zip.so";
     private static final String pythonDirName = "python";
     private static final String ffmpegDirName = "ffmpeg";
-    protected static final String youtubeDLDirName = "youtube-dl";
+    protected static final String youtubeDLDirName = "yt-dlp";
     private static final String youtubeDLBin = "__main__.py";
-    protected static final String youtubeDLFile = "youtube_dl.zip";
+    protected static final String youtubeDLFile = "yt_dlp.zip";
     private static final String pythonLibVersion = "pythonLibVersion";
 
     private boolean initialized = false;
@@ -208,14 +208,14 @@ public class YoutubeDL {
         return youtubeDLResponse;
     }
 
-//    synchronized public UpdateStatus updateYoutubeDL(Context appContext) throws YoutubeDLException {
-//        assertInit();
-//        try {
-//            return YoutubeDLUpdater.update(appContext);
-//        } catch (IOException e) {
-//            throw new YoutubeDLException("failed to update youtube-dl", e);
-//        }
-//    }
+    synchronized public UpdateStatus updateYoutubeDL(Context appContext) throws YoutubeDLException {
+        assertInit();
+        try {
+            return YoutubeDLUpdater.update(appContext);
+        } catch (IOException e) {
+            throw new YoutubeDLException("failed to update youtube-dl", e);
+        }
+    }
 
     @Nullable
     public String version(Context appContext) {
